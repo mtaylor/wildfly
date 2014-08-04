@@ -42,6 +42,7 @@ import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.DUPS
 import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.ENTRIES;
 import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.FAILOVER_ON_INITIAL_CONNECTION;
 import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.GROUP_ID;
+import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.JNDI_NAME;
 import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.MAX_RETRY_INTERVAL;
 import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.MIN_LARGE_MESSAGE_SIZE;
 import static org.jboss.as.messaging.jms.ConnectionFactoryAttributes.Common.PRE_ACKNOWLEDGE;
@@ -148,7 +149,7 @@ public class PooledConnectionFactoryDefinition extends SimpleResourceDefinition 
             CONFIRMATION_WINDOW_SIZE, CONNECTION_TTL, CONSUMER_MAX_RATE,
             CONSUMER_WINDOW_SIZE, DUPS_OK_BATCH_SIZE, FAILOVER_ON_INITIAL_CONNECTION, GROUP_ID, HA, MAX_RETRY_INTERVAL, MIN_LARGE_MESSAGE_SIZE, PRE_ACKNOWLEDGE,
             PRODUCER_MAX_RATE, PRODUCER_WINDOW_SIZE, RETRY_INTERVAL, RETRY_INTERVAL_MULTIPLIER, TRANSACTION_BATCH_SIZE,
-            USE_GLOBAL_POOLS, // end of common attributes
+            USE_GLOBAL_POOLS, JNDI_NAME, // end of common attributes
             JNDI_PARAMS, RECONNECT_ATTEMPTS, SETUP_ATTEMPTS, SETUP_INTERVAL,
             TRANSACTION, USE_JNDI, USE_LOCAL_TX};
 

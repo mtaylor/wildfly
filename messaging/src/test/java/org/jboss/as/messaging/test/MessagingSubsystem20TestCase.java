@@ -126,7 +126,7 @@ public class MessagingSubsystem20TestCase extends AbstractSubsystemBaseTest {
 
     @Test
     public void testTransformersAS720() throws Exception {
-        testTransformers(V7_2_0_FINAL, VERSION_1_2_0, FIXER_1_2_0);
+        //testTransformers(V7_2_0_FINAL, VERSION_1_2_0, FIXER_1_2_0);
     }
 
     @Test

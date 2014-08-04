@@ -216,6 +216,10 @@ public interface ConnectionFactoryAttributes {
                 .setAllowExpression(true)
                 .build();
 
+       AttributeDefinition JNDI_NAME = SimpleAttributeDefinitionBuilder.create("jndi-name", STRING)
+          .setAllowNull(true)
+          .build();
+
         AttributeDefinition MAX_RETRY_INTERVAL = SimpleAttributeDefinitionBuilder.create("max-retry-interval", LONG)
                 .setDefaultValue(new ModelNode().set(DEFAULT_MAX_RETRY_INTERVAL))
                 .setMeasurementUnit(MILLISECONDS)
@@ -337,6 +341,8 @@ public interface ConnectionFactoryAttributes {
                 create(GROUP_ID, "groupID", true),
 
                 create(DISCOVERY_INITIAL_WAIT_TIMEOUT, null, false), // Not used since messaging 1.2, we keep it for compatibility sake
+
+                create(JNDI_NAME, "jndiName", true),
         };
     }
 

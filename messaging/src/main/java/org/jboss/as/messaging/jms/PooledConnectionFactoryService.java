@@ -129,6 +129,7 @@ import org.jboss.security.SubjectFactory;
  * @author Jason T. Greene
  *         Date: 5/13/11
  *         Time: 2:21 PM
+ * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>
  */
 public class PooledConnectionFactoryService implements Service<Void> {
 
@@ -162,6 +163,7 @@ public class PooledConnectionFactoryService implements Service<Void> {
     public static final String JGROUPS_CHANNEL_LOCATOR_CLASS = "jgroupsChannelLocatorClass";
     public static final String JGROUPS_CHANNEL_NAME = "jgroupsChannelName";
     public static final String JGROUPS_CHANNEL_REF_NAME = "jgroupsChannelRefName";
+    public static final String JNDI_NAME = "jndiName";
 
     private Injector<Object> transactionManager = new InjectedValue<Object>();
     private List<String> connectors;
@@ -179,6 +181,7 @@ public class PooledConnectionFactoryService implements Service<Void> {
     private String hqServerName;
     private final String jgroupsChannelName;
     private final boolean createBinderService;
+    private String jndiName;
 
    public PooledConnectionFactoryService(String name, List<String> connectors, String discoveryGroupName, String hqServerName, String jgroupsChannelName, List<PooledConnectionFactoryConfigProperties> adapterParams, List<String> jndiNames, String txSupport, int minPoolSize, int maxPoolSize) {
         this.name = name;
@@ -188,6 +191,7 @@ public class PooledConnectionFactoryService implements Service<Void> {
         this.jgroupsChannelName = jgroupsChannelName;
         this.adapterParams = adapterParams;
         initJNDIBindings(jndiNames);
+        jndiName = bindInfo.getAbsoluteJndiName();
         createBinderService = true;
         this.txSupport = txSupport;
         this.minPoolSize = minPoolSize;
@@ -203,6 +207,7 @@ public class PooledConnectionFactoryService implements Service<Void> {
         this.jgroupsChannelName = jgroupsChannelName;
         this.adapterParams = adapterParams;
         this.bindInfo = bindInfo;
+        jndiName = bindInfo.getAbsoluteJndiName();
         this.jndiAliases = EMPTY_LIST;
         this.createBinderService = false;
         this.txSupport = txSupport;
@@ -399,6 +404,8 @@ public class PooledConnectionFactoryService implements Service<Void> {
             AS7RecoveryRegistry.container = container;
             properties.add(simpleProperty15(TRANSACTION_MANAGER_LOCATOR_CLASS, STRING_TYPE, TransactionManagerLocator.class.getName()));
             properties.add(simpleProperty15(TRANSACTION_MANAGER_LOCATOR_METHOD, STRING_TYPE, "getTransactionManager"));
+
+            properties.add(simpleProperty15(JNDI_NAME, STRING_TYPE, jndiName));
 
             OutboundResourceAdapter outbound = createOutbound();
             InboundResourceAdapter inbound = createInbound();
