@@ -108,6 +108,7 @@ public class HTTPUpgradeService implements Service<HTTPUpgradeService> {
         listenerInfo.addHttpUpgradeMetadata(httpUpgradeMetadata);
 
         MessagingLogger.ROOT_LOGGER.registeredHTTPUpgradeHandler(ACTIVEMQ_REMOTING, acceptorName);
+
         ServiceController<?> activeMQService = context.getController().getServiceContainer().getService(MessagingServices.getActiveMQServiceName(activeMQServerName));
         ActiveMQServer activeMQServer = ActiveMQServer.class.cast(activeMQService.getValue());
 
@@ -174,10 +175,10 @@ public class HTTPUpgradeService implements Service<HTTPUpgradeService> {
 
     @Override
     public void stop(StopContext context) {
-        listenerRegistry.getValue().getListener(httpListenerName).removeHttpUpgradeMetadata(httpUpgradeMetadata);
-        httpUpgradeMetadata = null;
-        injectedRegistry.getValue().removeProtocol(getProtocol(), httpUpgradeListener);
-        httpUpgradeListener = null;
+//        listenerRegistry.getValue().getListener(httpListenerName).removeHttpUpgradeMetadata(httpUpgradeMetadata);
+//        httpUpgradeMetadata = null;
+//        injectedRegistry.getValue().removeProtocol(getProtocol(), httpUpgradeListener);
+//        httpUpgradeListener = null;
     }
 
     @Override
