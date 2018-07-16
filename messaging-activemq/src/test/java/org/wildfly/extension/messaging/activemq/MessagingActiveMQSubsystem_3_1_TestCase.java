@@ -261,7 +261,8 @@ public class MessagingActiveMQSubsystem_3_1_TestCase extends AbstractSubsystemBa
                 JGroupsDefaultRequirement.CHANNEL_FACTORY.getName(),
                 Capabilities.ELYTRON_DOMAIN_CAPABILITY,
                 Capabilities.ELYTRON_DOMAIN_CAPABILITY + ".elytronDomain",
-                CredentialReference.CREDENTIAL_STORE_CAPABILITY + ".cs1");
+                CredentialReference.CREDENTIAL_STORE_CAPABILITY + ".cs1",
+                "org.wildfly.data-source.fooDS");
     }
 
     private static class ChangeToTrueConfig extends FailedOperationTransformationConfig.AttributesPathAddressConfig<ChangeToTrueConfig> {
